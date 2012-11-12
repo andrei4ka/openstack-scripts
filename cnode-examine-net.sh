@@ -54,6 +54,15 @@ echo_n "iptables-save"
 iptables-save > "$OUT/iptables-save"
 echo_done
 
+echo_n "traceroute to 8.8.8.8"
+traceroute -n 8.8.8.8 > "$OUT/trace"
+echo_done
+
+echo_n "ebtables dump"
+ebtables -t filter -L > "$OUT/ebtables"
+ebtables -t nat -L >> "$OUT/ebtables"
+echo_done
+
 echo_n "creating archive" "$ARCHIVE"
 tar -C $TMP_DIR -cvzf $ARCHIVE $LABEL
 chown $USER.$GROUP $ARCHIVE
