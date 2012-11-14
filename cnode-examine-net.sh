@@ -65,6 +65,11 @@ ebtables -t filter -L > "$OUT/ebtables"
 ebtables -t nat -L >> "$OUT/ebtables"
 echo_done
 
+echo_n "config files copy"
+cp -ax /etc/nova $OUT/nova
+cp -ax /etc/quantum $OUT/quantum
+echo_done
+
 
 dialog --yesno "Can we restart nova-network?" 10 40
 if [ $? -eq 0 ]; then
