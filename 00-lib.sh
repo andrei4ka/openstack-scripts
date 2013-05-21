@@ -1,18 +1,28 @@
-BASE_DIR=$(dirname $(readlink -f $0))
-CONFIG=$BASE_DIR/stackrc
-LOCAL_CONFIG=localrc
+#
+#  Author:      Artem Andreev
+#  Email:       aandreev@mirantis.com
+#  Edited by:   akirilochkin@mirantis.com
+#  Date:        21.05.2013
+#  Version:     0.1
+#  Description: Base function script from "Openstack grizzly install package"
+#
 
-ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin_password}
-SERVICE_PASSWORD=${SERVICE_PASSWORD:-service_pass}
-SERVICE_TENANT_NAME=${SERVICE_TENANT_NAME:-service}
+
+base_dir=$(dirname $(readlink -f $0))
+config=${base_dir}/stackrc
+local_config=localrc
+
+admin_password=${admin_password:-admin_password}
+service_password=${service_password:-service_pass}
+service_tenant_name=${service_tenant_name:-service}
 
 
 function read_config()
 {
-	. $CONFIG
-	if test -e $LOCAL_CONFIG; then
-		echo "using local configuration file $LOCAL_CONFIG" >&2
-		. $LOCAL_CONFIG
+	. ${config}
+	if test -e ${local_config}; then
+		echo "using local configuration file ${local_config}" >&2
+		. ${local_config}
 	fi
 }
 

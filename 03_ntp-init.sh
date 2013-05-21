@@ -5,7 +5,7 @@
 function update_config()
 {
 	cp /etc/ntp.conf /etc/ntp.conf.openstackback
-	echo -e "restrict $CTRL_RANGE mask $CTRL_MASK\nbroadcast $CTRL_BROADCAST\ndisable auth\nbroadcastclient" >> /etc/ntp.conf
+	echo -e "restrict ${ctrl_range} mask ${ctrl_mask}\nbroadcast ${ctrl_broadcast}\ndisable auth\nbroadcastclient" >> /etc/ntp.conf
 }
 
 run_command "Update config" update_config

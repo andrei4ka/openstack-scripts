@@ -1,6 +1,16 @@
 #!/bin/bash
-### Please correct credentials in stackrc
 
+#
+#  Author:      Artem Andreev
+#  Email:       aandreev@mirantis.com
+#  Edited by:   akirilochkin@mirantis.com
+#  Date:        21.05.2013
+#  Version:     0.1
+#  Description: Main install script from "Openstack grizzly install package"
+#
+
+
+### Please correct your setting and credentials in stackrc
 #check the options and credentials in ./creds
 
 . creds

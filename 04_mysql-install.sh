@@ -7,8 +7,8 @@ export DEBIAN_FRONTEND=noninteractive
 function configure_mysql()
 {
 	cp /etc/mysql/my.cnf /etc/mysql/my.cnf.openstackbackup
-	sed -i "s/127.0.0.1/$MYSQL_HOST/g" /etc/mysql/my.cnf
-	mysqladmin -u root password $MYSQL_PASSWORD
+	sed -i "s/127.0.0.1/${mysql_host}/g" /etc/mysql/my.cnf
+	mysqladmin -u root password ${mysql_password}
 }
 
 run_command "Installing MySQL server" apt-get install -y mysql-server python-mysqldb

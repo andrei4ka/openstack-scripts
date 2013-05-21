@@ -4,7 +4,7 @@
 
 function configure_rabit ()
 {
-	echo RABBITMQ_NODE_IP_ADDRESS=$RABBIT_HOST > /etc/rabbitmq/rabbitmq.conf.d/bind-address
+	echo RABBITMQ_NODE_IP_ADDRESS=${rabbit_host} > /etc/rabbitmq/rabbitmq.conf.d/bind-address
 	rabbitmqctl set_permissions -p / guest ".*" ".*" ".*"
 }
 

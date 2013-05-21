@@ -4,13 +4,14 @@
 
 function configure_keystone()
 {
-	TMP_KEYSTONE_SQL_FILE=/tmp/keystone.db.sql
-	KEYSTONE_CONFIG=/etc/keystone/keystone.conf
-	sed -i "s/# admin_token = ADMIN/admin_token = $ADMIN_TOKEN/g" $KEYSTONE_CONFIG
-	sed -i "s%connection = sqlite:////var/lib/keystone/keystone.db%connection = mysql://keystone:$KEYSTONE_DB_PASSWORD@$MYSQL_HOST/keystone%g" $KEYSTONE_CONFIG
-	echo "create database keystone;" > $TMP_KEYSTONE_SQL_FILE
-	echo "grant all privileges on keystone.* to keystone@'%' identified by '$KEYSTONE_DB_PASSWORD';" >> $TMP_KEYSTONE_SQL_FILE
-	mysql -uroot -p$MYSQL_PASSWORD < $TMP_KEYSTONE_SQL_FILE
+	tmp_keystone_sql_file=/tmp/keystone.db.sql
+	keystone_config=/etc/keystone/keystone.conf
+
+	sed -i "s/# admin_token = ADMIN/admin_token = ${admin_token}/g" ${keystone_config}
+	sed -i "s%connection = sqlite:////var/lib/keystone/keystone.db%connection = mysql://keystone:${keystone_db_password}@${mysql_host}/keystone%g" ${keystone_config}
+	echo "create database keystone;" > ${tmp_keystone_sql_file}
+	echo "grant all privileges on keystone.* to keystone@'%' identified by '$keystone_db_password';" >> ${tmp_keystone_sql_file}
+	mysql -uroot -p${mysql_password} < ${tmp_keystone_sql_file}
 
 }
 

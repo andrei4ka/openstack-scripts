@@ -1,89 +1,88 @@
-# Network
-CC_HOST=192.168.67.129
-CC_PUB_HOST=$CC_HOST
-CC_ADMIN_HOST=$CC_HOST
-CC_NODE_CTRL_IP=$CC_HOST
-CC_NODE_DATA_IP=$CC_HOST
-CC_NODE_PUB_IP=$CC_HOST
+# Network 
+cc_host=192.168.67.129
+cc_pub_host=${cc_host}
+cc_admin_host=$cc_host
+cc_node_ctrl_ip=$cc_host
+cc_node_data_ip=$cc_host
+cc_node_pub_ip=$cc_host
 
-
-FIXED_IP_RANGE=192.168.67.0/24
-FIRST_VLAN_ID=1000
-DATA_IFACE_NAME=eth0
-FLOATING_IP_RANGE=50.50.50.0/24
-PUB_IFACE_NAME=eth0
-NETWORK_SIZE=254
+fixed_ip_range=192.168.67.0/24
+floating_ip_range=50.50.50.0/24
+network_size=254
+first_vlan_id=1000
+data_iface_name=eth0
+pub_iface_name=eth0
 
 # NTP SERVER
-CTRL_RANGE=192.168.67.0
-CTRL_MASK=255.255.255.0
-CTRL_BROADCAST=192.168.67.255
+ctrl_range=192.168.67.0
+ctrl_mask=255.255.255.0
+ctrl_broadcast=192.168.67.255
 
 # MySQL
-MYSQL_PASSWORD=123
-#MYSQL_HOST=$CC_HOST
-MYSQL_HOST=192.168.67.129
+mysql_password=123
+#mysql_host=$cc_host
+mysql_host_ip=192.168.67.129
 
 # Rabit
-RABBIT_HOST=$CC_HOST
+rabbit_host=$cc_host
 
-# Keystone
-ADMIN_TOKEN=ADMIN
-ADMIN_PASSWORD=123
-SERVICE_PASSWORD=123
-SERVICE_TENANT_NAME=service
-KEYSTONE_DB_PASSWORD=123
-KEYSTONE_DB=keystone
-KEYSTONE_REGION=RegionOne
-KEYSTONE_HOST=$CC_HOST
-KEYSTONE_PUB_HOST=$CC_PUB_HOST
-KEYSTONE_ADMIN_HOST=$CC_ADMIN_HOST
+# keystone
+admin_token=ADMIN
+admin_password=123
+service_password=123
+service_tenant_name=service
+keystone_db_password=123
+keystone_db=keystone
+keystone_region=RegionOne
+keystone_host=$cc_host
+keystone_pub_host=$cc_pub_host
+keystone_admin_host=$cc_admin_host
 
-# Glance
-GLANCE_HOST=$CC_HOST
-GLANCE_PUB_HOST=$CC_PUB_HOST
-GLANCE_ADMIN_HOST=$CC_ADMIN_HOST
-GLANCE_USER_PASSWORD=$SERVICE_PASSWORD
-GLANCE_DB_PASSWORD=123
+# glance
+glance_host=$cc_host
+glance_pub_host=$cc_pub_host
+glance_admin_host=$cc_admin_host
+glance_user_PASSWORD=$service_password
+glance_db_password=123
 
-# Quantum
-QUANTUM_HOST=$CC_HOST
-QUANTUM_PUB_HOST=$CC_PUB_HOST
-QUANTUM_ADMIN_HOST=$CC_ADMIN_HOST
-QUANTUM_USER_PASSWORD=$SERVICE_PASSWORD
-QUANTUM_DB_PASSWORD=123
+# quantum
+quantum_host=$cc_host
+quantum_pub_host=$cc_pub_host
+quantum_admin_host=$cc_admin_host
+quantum_user_PASSWORD=$service_password
+quantum_db_password=123
 
 # Nova
-NOVA_HOST=$CC_HOST
-NOVA_PUB_HOST=$CC_PUB_HOST
-NOVA_ADMIN_HOST=$CC_ADMIN_HOST
-NOVA_USER_PASSWORD=$SERVICE_PASSWORD
-NOVA_DB_PASSWORD=123
+nova_host=$cc_host
+nova_pub_host=$cc_pub_host
+nova_admin_host=$cc_admin_host
+nova_user_password=$service_password
+nova_db_password=123
 
 # Nova Volume
-LVM_BLOCK_DEVICE=/dev/loop2
-VOL_GROUP_NAME=cinder-volumes
+lvm_block_device=/dev/loop2
+vol_group_name=cinder_volumes
 
 # EC2
-EC2_HOST=$CC_HOST
-EC2_PUB_HOST=$CC_PUB_HOST
-EC2_ADMIN_HOST=$CC_ADMIN_HOST
+ec2_host=$cc_host
+ec2_pub_host=$cc_pub_host
+ec2_admin_host=$cc_admin_host
 
 # Cinder
-CINDER_HOST=$CC_HOST
-CINDER_PUB_HOST=$CC_PUB_HOST
-CINDER_ADMIN_HOST=$CC_ADMIN_HOST
-CINDER_USER_PASSWORD=$SERVICE_PASSWORD
-CINDER_DB_PASSWORD=123
-LVM_FILE=/cinder-volumes-file
-LVM_BLOCK_DEVICE=/dev/loop2
-VOL_GROUP_NAME=cinder-volumes
+cinder_host=$cc_host
+cinder_pub_host=$cc_pub_host
+cinder_admin_host=$cc_admin_host
+cinder_user_password=$service_password
+cinder_db_password=123
+lvm_file=/cinder_volumes_file
+lvm_block_device=/dev/loop2
+vol_group_name=cinder_volumes
 
 # Swift
-SWIFT_HOST=$CC_HOST
-SWIFT_PUB_HOST=$CC_PUB_HOST
-SWIFT_ADMIN_HOST=$CC_ADMIN_HOST
+swift_host=$cc_host
+swift_pub_host=$cc_pub_host
+swift_admin_host=$cc_admin_host
 
 # VNC
-VNC_HOST=$CC_HOST
-VNC_PUB_HOST=$CC_PUB_HOST
+vnc_host=$cc_host
+vnc_pub_host=$cc_pub_host
