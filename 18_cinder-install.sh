@@ -1,13 +1,22 @@
 #!/bin/bash
 
+#  Name:        18_cinder-install.sh
+#  Author:      Artem Andreev
+#  Email:       aandreev@mirantis.com
+#  Edited by:   akirilochkin@mirantis.com
+#  Date:        22.05.2013
+#  Version:     0.2
+#  Description: Cinder install script "18_cinder-install.sh" from "Openstack grizzly install package"
+#
+
 . $(dirname $(readlink -f $0))/00-lib.sh
 
 function create_cinderdb ()
 {
 	#Prepare a Mysql database for Cinder:
 	echo "CREATE DATABASE cinder;" > /tmp/cinder.sql
-	echo "GRANT ALL ON cinder.* TO cinder@'%' IDENTIFIED BY '$CINDER_DB_PASSWORD';" >> /tmp/cinder.sql
-	mysql -u root -p$MYSQL_PASSWORD < /tmp/cinder.sql
+	echo "GRANT ALL ON cinder.* TO cinder@'%' IDENTIFIED BY '${cinder_db_password}';" >> /tmp/cinder.sql
+	mysql -u root -p${mysql_password} < /tmp/cinder.sql
 	
 
 }
@@ -20,15 +29,15 @@ function configure_nova ()
 	service iscsitarget start
 	service open-iscsi start
 
-	sed -i "s/service_host = 127.0.0.1/service_host = $KEYSTONE_HOST/g" /etc/cinder/api-paste.ini
-	sed -i "s/auth_host = 127.0.0.1/auth_host = $KEYSTONE_HOST/g" /etc/cinder/api-paste.ini
-	sed -i "s/%SERVICE_TENANT_NAME%/$SERVICE_TENANT_NAME/g" /etc/cinder/api-paste.ini
+	sed -i "s/service_host = 127.0.0.1/service_host = ${keystone_host}/g" /etc/cinder/api-paste.ini
+	sed -i "s/auth_host = 127.0.0.1/auth_host = ${keystone_host}/g" /etc/cinder/api-paste.ini
+	sed -i "s/%SERVICE_TENANT_NAME%/${service_tenant_name}/g" /etc/cinder/api-paste.ini
 	sed -i "s/%SERVICE_USER%/cinder/g" /etc/cinder/api-paste.ini
-	sed -i "s/%SERVICE_PASSWORD%/$CINDER_USER_PASSWORD/g" /etc/cinder/api-paste.ini
+	sed -i "s/%SERVICE_PASSWORD%/${cinder_user_password}/g" /etc/cinder/api-paste.ini
 	
-	echo "sql_connection = mysql://cinder:$CINDER_DB_PASSWORD@$MYSQL_HOST/cinder" >> /etc/cinder/cinder.conf
+	echo "sql_connection = mysql://cinder:${cinder_db_password}@${mysql_host}/cinder" >> /etc/cinder/cinder.conf
 	sed -i "s/tgtadm/ietadm/g" /etc/cinder/cinder.conf 
-	sed -i "s/^volume_group = cinder-volumes/volume_group = $VOL_GROUP_NAME/g" >> /etc/cinder/cinder.conf
+	sed -i "s/^volume_group = cinder-volumes/volume_group = ${vol_group_name}/g" >> /etc/cinder/cinder.conf
 	echo "# Cinder #" >> /etc/nova/nova.conf
 	echo "volume_api_class=nova.volume.cinder.API" >> /etc/nova/nova.conf
 #	echo "osapi_volume_listen_port=5900" >> /etc/nova/nova.conf

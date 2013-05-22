@@ -4,7 +4,7 @@
 
 function configure_horizon ()
 {
-	sed -i "s/OPENSTACK_HOST = \"127.0.0.1\"/OPENSTACK_HOST = \"$KEYSTONE_PUB_HOST\"/g" /etc/openstack-dashboard/local_settings.py
+	sed -i "s/OPENSTACK_HOST = \"127.0.0.1\"/OPENSTACK_HOST = \"${keystone_pub_host}\"/g" /etc/openstack-dashboard/local_settings.py
 #	sed -i "s/try:/#try:/g" /etc/openstack-dashboard/local_settings.py
 #	sed -i "s/    from ubuntu_theme import */#    from ubuntu_theme import */g" /etc/openstack-dashboard/local_settings.py
 #	sed -i "s/except ImportError:/#except ImportError:/g" /etc/openstack-dashboard/local_settings.py

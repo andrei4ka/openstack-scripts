@@ -1,14 +1,24 @@
 #!/bin/bash
 
+#  Name:        19_cinder-volume-install.sh
+#  Author:      Artem Andreev
+#  Email:       aandreev@mirantis.com
+#  Edited by:   akirilochkin@mirantis.com
+#  Date:        22.05.2013
+#  Version:     0.2
+#  Description: Cinder volume  install script "19_cinder-volume-install.sh" from "Openstack grizzly install package"
+#
+
+
 . $(dirname $(readlink -f $0))/00-lib.sh
 
 
 function create_block_device ()
 {
-    dd if=/dev/zero of=$LVM_FILE bs=1 count=0 seek=2G
-    losetup  $LVM_BLOCK_DEVICE $LVM_FILE
-    pvcreate $LVM_BLOCK_DEVICE
-    vgcreate $VOL_GROUP_NAME $LVM_BLOCK_DEVICE
+    dd if=/dev/zero of=$lvm_file bs=1 count=0 seek=2G
+    losetup  ${lvm_block_device} ${lvm_file}
+    pvcreate ${lvm_block_device}
+    vgcreate ${vg_group_name} ${lvm_block_device}
 }
 
 #function configure_volume ()
@@ -20,4 +30,4 @@ function create_block_device ()
 
 run_command "Creating block device" create_block_device
 #run_command "Configure volume" configure_volume
-echo "losetup $LVM_BLOCK_DEVICE $LVM_FILE" >> /etc/rc.local
+echo "losetup ${lvm_block_device} ${lvm_file}" >> /etc/rc.local
