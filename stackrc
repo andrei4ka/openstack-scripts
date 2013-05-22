@@ -1,10 +1,20 @@
+#!/bin/bash
+#  Name:        stackrc
+#  Author:      Artem Andreev
+#  Email:       aandreev@mirantis.com
+#  Edited by:   akirilochkin@mirantis.com
+#  Date:        21.05.2013
+#  Version:     0.1
+#  Description: Simple conf, one host, one ip & one ethernet "stackrc" from "Openstack grizzly install package"
+
+
 # Network 
-cc_host=192.168.67.129
+cc_host=192.168.67.100
 cc_pub_host=${cc_host}
-cc_admin_host=$cc_host
-cc_node_ctrl_ip=$cc_host
-cc_node_data_ip=$cc_host
-cc_node_pub_ip=$cc_host
+cc_admin_host=${cc_host}
+cc_node_ctrl_ip=${cc_host}
+cc_node_data_ip=${cc_host}
+cc_node_pub_ip=${cc_host}
 
 fixed_ip_range=192.168.67.0/24
 floating_ip_range=50.50.50.0/24
@@ -20,69 +30,65 @@ ctrl_broadcast=192.168.67.255
 
 # MySQL
 mysql_password=123
-#mysql_host=$cc_host
+#mysql_host=${cc_host}
 mysql_host_ip=192.168.67.129
 
 # Rabit
-rabbit_host=$cc_host
+rabbit_host=${cc_host}
 
-# keystone
+# Keystone
 admin_token=ADMIN
 admin_password=123
 service_password=123
 service_tenant_name=service
-keystone_db_password=123
+keystone_db_password=${mysql_password}
 keystone_db=keystone
 keystone_region=RegionOne
-keystone_host=$cc_host
-keystone_pub_host=$cc_pub_host
-keystone_admin_host=$cc_admin_host
+keystone_host=${cc_host}
+keystone_pub_host=${cc_pub_host}
+keystone_admin_host=${cc_admin_host}
 
-# glance
-glance_host=$cc_host
-glance_pub_host=$cc_pub_host
-glance_admin_host=$cc_admin_host
-glance_user_PASSWORD=$service_password
-glance_db_password=123
+# Glance
+glance_host=${cc_host}
+glance_pub_host=${cc_pub_host}
+glance_admin_host=${cc_admin_host}
+glance_user_password=${service_password}
+glance_db_password=${mysql_password}
 
-# quantum
-quantum_host=$cc_host
-quantum_pub_host=$cc_pub_host
-quantum_admin_host=$cc_admin_host
-quantum_user_PASSWORD=$service_password
-quantum_db_password=123
+# Quantum
+quantum_host=${cc_host}
+quantum_pub_host=${cc_pub_host}
+quantum_admin_host=${cc_admin_host}
+quantum_user_password=${service_password}
+quantum_db_password=${mysql_password}
 
 # Nova
-nova_host=$cc_host
-nova_pub_host=$cc_pub_host
-nova_admin_host=$cc_admin_host
-nova_user_password=$service_password
-nova_db_password=123
-
-# Nova Volume
-lvm_block_device=/dev/loop2
-vol_group_name=cinder_volumes
+nova_host=${cc_host}
+nova_pub_host=${cc_pub_host}
+nova_admin_host=${cc_admin_host}
+nova_user_password=${service_password}
+nova_db_password=${mysql_password}
 
 # EC2
-ec2_host=$cc_host
-ec2_pub_host=$cc_pub_host
-ec2_admin_host=$cc_admin_host
+ec2_host=${cc_host}
+ec2_pub_host=${cc_pub_host}
+ec2_admin_host=${cc_admin_host}
 
 # Cinder
-cinder_host=$cc_host
-cinder_pub_host=$cc_pub_host
-cinder_admin_host=$cc_admin_host
-cinder_user_password=$service_password
-cinder_db_password=123
-lvm_file=/cinder_volumes_file
+cinder_host=${cc_host}
+cinder_pub_host=${cc_pub_host}
+cinder_admin_host=${cc_admin_host}
+cinder_user_password=${service_password}
+cinder_db_password=${mysql_password}
+lvm_file=/opt/cinder_volumes_file
 lvm_block_device=/dev/loop2
 vol_group_name=cinder_volumes
 
 # Swift
-swift_host=$cc_host
-swift_pub_host=$cc_pub_host
-swift_admin_host=$cc_admin_host
+swift_host=${cc_host}
+swift_pub_host=${cc_pub_host}
+swift_admin_host=${cc_admin_host}
 
 # VNC
-vnc_host=$cc_host
-vnc_pub_host=$cc_pub_host
+vnc_host=${cc_host}
+vnc_pub_host=${cc_pub_host}

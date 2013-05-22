@@ -1,5 +1,15 @@
 #!/bin/bash
 
+#  Name:        01_adding_grizzly_repository.sh
+#  Author:      Artem Andreev
+#  Email:       aandreev@mirantis.com
+#  Edited by:   akirilochkin@mirantis.com
+#  Date:        21.05.2013
+#  Version:     0.1
+#  Description: Script for adding grizzly repos "01_adding_grizzly_repository.sh" from "Openstack grizzly install package"
+#
+
+
 . $(dirname $(readlink -f $0))/00-lib.sh
 
 function add_repository() {

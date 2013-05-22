@@ -1,12 +1,12 @@
 #!/bin/bash
 
-#
+#  Name:        00_all-in-one.sh
 #  Author:      Artem Andreev
 #  Email:       aandreev@mirantis.com
 #  Edited by:   akirilochkin@mirantis.com
 #  Date:        21.05.2013
 #  Version:     0.1
-#  Description: Main install script from "Openstack grizzly install package"
+#  Description: Main install script "00_all-in-one.sh" from "Openstack grizzly install package"
 #
 
 
@@ -23,7 +23,7 @@
 ./6_netutils-install.sh
 ./7_keystone-install.sh
 ./8_keystone-basic.sh
-./9_keystone_endpoints_basic.sh
+./9_keystone-endpoints-basic.sh
 ./10_glance-install.sh
 ./11_glance-init.sh
 ./12_quantum-install.sh

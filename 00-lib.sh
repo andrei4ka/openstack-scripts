@@ -1,10 +1,10 @@
-#
+#  Name:        00-lib.sh
 #  Author:      Artem Andreev
 #  Email:       aandreev@mirantis.com
 #  Edited by:   akirilochkin@mirantis.com
 #  Date:        21.05.2013
 #  Version:     0.1
-#  Description: Base function script from "Openstack grizzly install package"
+#  Description: Base function script "00-lib.sh" from "Openstack grizzly install package"
 #
 
 

@@ -1,5 +1,14 @@
 #!/bin/bash
 
+#  Name:        06_netutils-install.sh
+#  Author:      Artem Andreev
+#  Email:       aandreev@mirantis.com
+#  Edited by:   akirilochkin@mirantis.com
+#  Date:        21.05.2013
+#  Version:     0.1
+#  Description: Configuring sysctl script from "Openstack grizzly install package"
+#
+
 . $(dirname $(readlink -f $0))/00-lib.sh
 
 function update_config()

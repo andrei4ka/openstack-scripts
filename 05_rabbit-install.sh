@@ -1,5 +1,15 @@
 #!/bin/bash
 
+#  Name:        05_rabbit-install.sh
+#  Author:      Artem Andreev
+#  Email:       aandreev@mirantis.com
+#  Edited by:   akirilochkin@mirantis.com
+#  Date:        21.05.2013
+#  Version:     0.1
+#  Description: Rabbit install script from "Openstack grizzly install package"
+#
+
+
 . $(dirname $(readlink -f $0))/00-lib.sh
 
 function configure_rabit ()
