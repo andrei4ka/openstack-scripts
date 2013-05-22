@@ -1,5 +1,14 @@
 #!/bin/bash
 
+#  Name:        13_kvm-install.sh
+#  Author:      Artem Andreev
+#  Email:       aandreev@mirantis.com
+#  Edited by:   akirilochkin@mirantis.com
+#  Date:        22.05.2013
+#  Version:     0.2
+#  Description: KVM  install script "13_kvm-install.sh" from "Openstack grizzly install package"
+#
+
 . $(dirname $(readlink -f $0))/00-lib.sh
 
 function configure_KVM ()

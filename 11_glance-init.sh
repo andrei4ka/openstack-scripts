@@ -1,5 +1,14 @@
 #!/bin/bash
 
+#  Name:        11_glance-init.sh
+#  Author:      Artem Andreev
+#  Email:       aandreev@mirantis.com
+#  Edited by:   akirilochkin@mirantis.com
+#  Date:        22.05.2013
+#  Version:     0.2
+#  Description: Glance init script "11_glance-init.sh " from "Openstack grizzly install package"
+#
+
 . $(dirname $(readlink -f $0))/00-lib.sh
 . $(dirname $(readlink -f $0))/creds
 
