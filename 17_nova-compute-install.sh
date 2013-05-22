@@ -1,5 +1,14 @@
 #!/bin/bash
 
+#  Name:        16_nova-vnc-install.sh
+#  Author:      Artem Andreev
+#  Email:       aandreev@mirantis.com
+#  Edited by:   akirilochkin@mirantis.com
+#  Date:        22.05.2013
+#  Version:     0.2
+#  Description: Quantum install script "16_nova-vnc-install.sh" from "Openstack grizzly install package"
+#
+
 . $(dirname $(readlink -f $0))/00-lib.sh
 
 function configure_nova_compute ()
@@ -10,12 +19,12 @@ function configure_nova_compute ()
 
 	echo "# Network settings" >> /etc/nova/nova.conf
 	echo "network_api_class=nova.network.quantumv2.api.API" >> /etc/nova/nova.conf
-	echo "quantum_url=http://$QUANTUM_PUB_HOST:9696" >> /etc/nova/nova.conf
+	echo "quantum_url=http://${quantum_pub_host}:9696" >> /etc/nova/nova.conf
 	echo "quantum_auth_strategy=keystone" >> /etc/nova/nova.conf
-	echo "quantum_admin_tenant_name=$SERVICE_TENANT_NAME" >> /etc/nova/nova.conf
+	echo "quantum_admin_tenant_name=${service_tenant_name}" >> /etc/nova/nova.conf
 	echo "quantum_admin_username=quantum" >> /etc/nova/nova.conf
-	echo "quantum_admin_password=$QUANTUM_USER_PASSWORD" >> /etc/nova/nova.conf
-	echo "quantum_admin_auth_url=http://$QUANTUM_PUB_HOST:35357/v2.0" >> /etc/nova/nova.conf
+	echo "quantum_admin_password=${quantum_user_passsword}" >> /etc/nova/nova.conf
+	echo "quantum_admin_auth_url=http://${quantum_pub_host}:35357/v2.0" >> /etc/nova/nova.conf
 	echo "libvirt_vif_driver=nova.virt.libvirt.vif.QuantumLinuxBridgeVIFDriver" >> /etc/nova/nova.conf
 	echo "linuxnet_interface_driver=nova.network.linux_net.LinuxBridgeInterfaceDriver" >> /etc/nova/nova.conf
 	echo "firewall_driver=nova.virt.libvirt.firewall.IptablesFirewallDriver" >> /etc/nova/nova.conf

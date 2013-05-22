@@ -1,5 +1,15 @@
 #!/bin/bash
 
+#  Name:        16_nova-vnc-install.sh
+#  Author:      Artem Andreev
+#  Email:       aandreev@mirantis.com
+#  Edited by:   akirilochkin@mirantis.com
+#  Date:        22.05.2013
+#  Version:     0.2
+#  Description: Quantum install script "16_nova-vnc-install.sh" from "Openstack grizzly install package"
+#
+
+
 . $(dirname $(readlink -f $0))/00-lib.sh
 
 function configure_nova_vnc ()
@@ -7,13 +17,13 @@ function configure_nova_vnc ()
 
     echo "# Vnc configuration" >> /etc/nova/nova.conf
     echo "novnc_enabled=true" >> /etc/nova/nova.conf
-    echo "novncproxy_base_url=http://$VNC_PUB_HOST:6080/vnc_auto.html" >> /etc/nova/nova.conf
-    echo "vpvncproxy_base_url=http://$VNC_PUB_HOST:6081/console" >> /etc/nova/nova.conf
+    echo "novncproxy_base_url=http://${vnc_pub_host}:6080/vnc_auto.html" >> /etc/nova/nova.conf
+    echo "vpvncproxy_base_url=http://${vnc_pub_host}:6081/console" >> /etc/nova/nova.conf
     echo "novncproxy_port=6080" >> /etc/nova/nova.conf
-    echo "vncserver_proxyclient_address=$CC_NODE_CTRL_IP" >> /etc/nova/nova.conf
+    echo "vncserver_proxyclient_address=${cc_node_crtl_ip}" >> /etc/nova/nova.conf
     #echo "vncserver_proxyclient_address=$VNC_PUB_HOST" >> /etc/nova/nova.conf
     #echo "vncserver_listen=0.0.0.0" >> /etc/nova/nova.conf
-    echo "vncserver_listen=$CC_NODE_CTRL_IP" >> /etc/nova/nova.conf
+    echo "vncserver_listen=${cc_node_crtl_ip}" >> /etc/nova/nova.conf
 
 }
 
